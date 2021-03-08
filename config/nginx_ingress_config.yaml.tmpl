@@ -1,8 +1,12 @@
 controller:
   ingressClass: ${ingress_class}
-  service:
-    loadBalancerIP: ${ip_address}
-  replicaCount: ${replica_count}
+  tolerations:
+    - key      = ${toleration_key}
+      operator = ${toleration_operator}
+      value    = ${toleration_value}
+      effect   = ${toleration_effect}
+
+      replicaCount: ${replica_count}
 %{ if enable_default_tls == true ~}
   config:
     ssl-redirect: "true"
