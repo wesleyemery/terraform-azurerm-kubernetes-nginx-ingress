@@ -1,13 +1,18 @@
-variable "helm_repository" {
-  description = "nginx-ingress helm repository url"
-  type        = string
-  default     = "https://kubernetes.github.io/ingress-nginx"
-}
-
 variable "helm_chart_version" {
   description = "helm chart version"
   type        = string
   default     = "3.4.1"
+}
+
+variable "helm_chart" {
+  description = "helm chart version"
+  type        = string
+}
+
+variable "helm_repository" {
+  description = "nginx-ingress helm repository url"
+  type        = string
+  default     = "https://helm.nginx.com/stable"
 }
 
 variable "helm_release_name" {
@@ -32,13 +37,6 @@ variable "ingress_class" {
   type        = string
   default     = "nginx"
 }
-
-/*
-variable "load_balancer_ip" {
-  description = "loadBalancerIP"
-  type        = string
-}
-*/
 
 variable "replica_count" {
   description = "The number of replicas of the Ingress controller deployment."	
@@ -83,13 +81,21 @@ variable "toleration_effect" {
   default = ""
 }
 
-
-/*variable "pod_tolerations" {
-  type = list(object({
+/*
+variable "pod_tolerations" {
+  default = {}
+  type    = map(object({
     key      = string
     operator =  string
     value    = string
     effect   = string
+  }))
+}
+*/
+
+/*variable "pod_tolerations" {
+  type = list(object({
+
   }))
 }*/
 

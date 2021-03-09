@@ -1,12 +1,15 @@
 controller:
   ingressClass: ${ingress_class}
   tolerations:
-    - key      = ${toleration_key}
-      operator = ${toleration_operator}
-      value    = ${toleration_value}
-      effect   = ${toleration_effect}
+    - key: ${toleration_value}
+      operator: ${toleration_operator}
+      value: ${toleration_value}
+      effect: ${toleration_effect}
 
-      replicaCount: ${replica_count}
+  replicaCount: ${replica_count}
+  service:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 %{ if enable_default_tls == true ~}
   config:
     ssl-redirect: "true"
