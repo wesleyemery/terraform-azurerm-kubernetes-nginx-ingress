@@ -81,24 +81,6 @@ variable "toleration_effect" {
   default = ""
 }
 
-/*
-variable "pod_tolerations" {
-  default = {}
-  type    = map(object({
-    key      = string
-    operator =  string
-    value    = string
-    effect   = string
-  }))
-}
-*/
-
-/*variable "pod_tolerations" {
-  type = list(object({
-
-  }))
-}*/
-
 variable "additional_yaml_config" {
   description = "yaml config for helm chart to be processed last"
   type        = string
